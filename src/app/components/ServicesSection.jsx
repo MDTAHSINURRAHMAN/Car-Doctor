@@ -1,205 +1,108 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import dbConnect from "@/lib/dbConnect";
+
 export default async function ServicesSection() {
-  //   const res = await fetch("./public/services.json");
-  const data = [
-    {
-      _id: "635a0c0b64a6d231228942ae",
-      service_id: "04",
-      title: "Engine Oil Change",
-      img: "https://i.ibb.co/T2cpBd5/888.jpg",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      _id: "635a0c0b64a6d231228942af",
-      service_id: "05",
-      title: "Battery Charge",
-      img: "https://i.ibb.co/ydCbDN3/5555.jpg",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      _id: "635b591a1dafe382a9da8c96",
-      service_id: "01",
-      title: "Full car Repair",
-      img: "https://i.ibb.co/R6Z2nFM/55.jpg",
-      price: "200.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      _id: "635b5afc1dafe382a9da8c98",
-      service_id: "02",
-      title: "Engine Repair",
-      img: "https://i.ibb.co/5MvmD2g/88.jpg",
-      price: "150.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      _id: "635b5b691dafe382a9da8c99",
-      service_id: "03",
-      title: "Automatic Services",
-      img: "https://i.ibb.co/wh7t3N3/555.jpg",
-      price: "30.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-    {
-      _id: "635b5ba51dafe382a9da8c9a",
-      service_id: "06",
-      title: "Electrical System",
-      img: "https://i.ibb.co/KzCG8qr/8888.jpg",
-      price: "20.00",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veniam nostrum dolores nemo quas. Minima ullam, veniam, nesciunt quae dolore animi blanditiis deserunt, ea esse dolorum ipsum quibusdam ipsa! Corrupti at, excepturi, fugiat aut nihil neque aliquid sapiente dignissimos provident, animi molestiae ipsum. Repudiandae ipsa id nihil reiciendis soluta eos ducimus pariatur, nam architecto tenetur quo quos commodi est libero repellendus vitae. Fuga numquam nulla nam, facere neque expedita voluptatibus pariatur necessitatibus vel, dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum. Aspernatur ex quibusdam at cum nulla!",
-      facility: [
-        {
-          name: "Instant Car Services",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "24/7 Quality Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Easy Customer Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-        {
-          name: "Quality Cost Service",
-          details:
-            "Fuga numquam nulla nam, facere neque dignissimos ab esse magni accusamus eveniet ad corrupti, architecto nostrum.",
-        },
-      ],
-    },
-  ];
+  const servicesCollection = await dbConnect("CarDoctorNextJS");
+  const data = await servicesCollection.find({}).toArray();
 
   return (
-    <div className="grid grid-cols-12">
-      {data.map((item) => {
-        return (
-          <div className="col-span-12 md:col-span-6 lg:col-span-4" key={item._id}>
-            <Image src={item.img} alt={item.title} width={314} height={208} />
-          </div>
-        );
-      })}
-    </div>
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Services
+          </h2>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            We provide comprehensive automotive services to keep your vehicle
+            running smoothly and efficiently. Choose from our wide range of
+            professional services.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {data.map((service) => (
+            <div
+              key={service._id}
+              className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1"
+            >
+              <div className="relative h-52 overflow-hidden">
+                <Image
+                  src={service.img}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-3">
+                  <h3 className="text-xl font-semibold text-gray-900 truncate">
+                    {service.title}
+                  </h3>
+                  <span className="bg-blue-100 text-blue-800 text-sm font-medium py-1 px-2 rounded-full">
+                    ${service.price}
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+                  {service.description.substring(0, 100)}...
+                </p>
+                <div className="flex flex-wrap items-center gap-4 mb-4">
+                  {service.facility.slice(0, 2).map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center text-sm text-gray-600"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-blue-600 mr-1"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      {item.name}
+                    </div>
+                  ))}
+                </div>
+                <Link
+                  href={`/services/${service.service_id}`}
+                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300"
+                >
+                  Book Now
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            href="/services"
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
+          >
+            View All Services
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-1"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </section>
   );
 }
