@@ -2,27 +2,27 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Navbar() {
-    const navMenu = () => {
-        return (
-            <>
-                <li>
-                    <Link href="/">Home</Link>
-                </li>
-                <li>
-                    <Link href="/about">About</Link>
-                </li>
-                <li>
-                    <Link href="/services">Services</Link>
-                </li>
-                <li>
-                    <Link href="/blogs">Blogs</Link>
-                </li>
-                <li>
-                    <Link href="/contacts">Contacts</Link>
-                </li>
-            </>
-        )
-    }
+  const navMenu = () => {
+    return (
+      <>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
+        <li>
+          <Link href="/about">About</Link>
+        </li>
+        <li>
+          <Link href="/services">Services</Link>
+        </li>
+        <li>
+          <Link href="/blogs">Blogs</Link>
+        </li>
+        <li>
+          <Link href="/contacts">Contacts</Link>
+        </li>
+      </>
+    );
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -52,15 +52,19 @@ export default function Navbar() {
           </ul>
         </div>
         <Link href="/" className="text-xl">
-            <Image src={'assets/logo.svg'} alt="logo" width={107} height={87} />
+          <Image src={"assets/logo.svg"} alt="logo" width={107} height={87} />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navMenu()}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navMenu()}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-2">
+        <Link href="/login" className="btn btn-primary">
+          Login
+        </Link>
+        <Link href="/register" className="btn btn-secondary">
+          Register
+        </Link>
         <a className="btn btn-outline">Appointment</a>
       </div>
     </div>
