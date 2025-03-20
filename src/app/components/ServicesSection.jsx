@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import dbConnect from "@/lib/dbConnect";
+import dbConnect, { collectionNamesObj } from "@/lib/dbConnect";
 
 export default async function ServicesSection() {
-  const servicesCollection = await dbConnect("CarDoctorNextJS");
+  const servicesCollection = await dbConnect(
+    collectionNamesObj.servicesCollection
+  );
   const data = await servicesCollection.find({}).toArray();
 
   return (
@@ -14,7 +16,7 @@ export default async function ServicesSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Our Services
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
+          <div className="w-20 h-1 bg-orange-500 mx-auto mb-4"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             We provide comprehensive automotive services to keep your vehicle
             running smoothly and efficiently. Choose from our wide range of
@@ -42,7 +44,7 @@ export default async function ServicesSection() {
                   <h3 className="text-xl font-semibold text-gray-900 truncate">
                     {service.title}
                   </h3>
-                  <span className="bg-blue-100 text-blue-800 text-sm font-medium py-1 px-2 rounded-full">
+                  <span className="bg-blue-100 text-orange-500 text-sm font-medium py-1 px-2 rounded-full">
                     ${service.price}
                   </span>
                 </div>
@@ -57,7 +59,7 @@ export default async function ServicesSection() {
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-blue-600 mr-1"
+                        className="h-4 w-4 text-orange-500 mr-1"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -72,35 +74,14 @@ export default async function ServicesSection() {
                   ))}
                 </div>
                 <Link
-                  href={`/services/${service.service_id}`}
-                  className="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300"
+                  href={`/services/${service._id}`}
+                  className="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-300"
                 >
                   Book Now
                 </Link>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link
-            href="/services"
-            className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors duration-300"
-          >
-            View All Services
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 ml-1"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </Link>
         </div>
       </div>
     </section>
